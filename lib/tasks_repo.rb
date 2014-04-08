@@ -22,9 +22,12 @@ class TasksRepo
     locate_task(id).update(new_attributes)
   end
 
+  def delete(id)
+    locate_task(id).delete
+  end
+
   private
   def locate_task(id)
     @tasks_table.where(:id => id)
   end
-
 end

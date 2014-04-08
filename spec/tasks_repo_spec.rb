@@ -43,4 +43,17 @@ describe TasksRepo do
     ]
     expect(@repo.all).to match_array(expected_tasks)
   end
+
+  it "allows user to delete a task by id" do
+    @repo.create(name: 'walk the dog')
+    @repo.create(name: 'water the plant')
+
+    @repo.delete(1)
+
+    expected_tasks = [
+        {id: 2, name: 'water the plant'}
+    ]
+
+    expect(@repo.all).to eq(expected_tasks)
+  end
 end
