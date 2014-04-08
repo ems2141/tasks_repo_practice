@@ -13,4 +13,18 @@ class TasksRepo
   def all
     @tasks_table.to_a
   end
+
+  def find(id)
+    locate_task(id).to_a.first
+  end
+
+  def update(id, new_attributes)
+    locate_task(id).update(new_attributes)
+  end
+
+  private
+  def locate_task(id)
+    @tasks_table.where(:id => id)
+  end
+
 end
